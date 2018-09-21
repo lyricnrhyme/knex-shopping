@@ -1,11 +1,13 @@
-DROP TABLE IF EXISTS products
+const express = require('express');
+const app = express();
+const bp = require('body-parser');
+const route = express.Router();
 
-CREATE TABLE products (
-    id SERIAL PRIMARY KEY NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    inventory INT NOT NULL,
-    price DECIMAL(8,2) NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT now(),
-    updated_at TIMESTAMP NOT NULL DEFAULT now()
-)
+
+
+app.get('/products', (req, res) => {
+    console.log('Products route home');
+    res.json('Welcome to PRODUCTS');
+})
+
+module.exports = route;

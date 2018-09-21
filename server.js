@@ -4,25 +4,16 @@ const bp = require('body-parser');
 const knex = require('knex');
 const pg = require('pg');
 const Users = require('./routes/users.js');
-const Products = require('./route/products.js');
+const Products = require('./routes/products.js');
 const Cart = require('./routes/cart.js');
 
-app.use(bp.urlencoded({extended: true}));
-app.use(knex);
-app.use(pg);
+app.use('/users', Users);
+app.use('/products', Products);
+app.use('/cart', Cart);
 
-app.get('/users', (req, res) => {
-    res.render(Users);
+app.get('*', (req, res) => {
+    console.log('User attempted to get a route/url that does not exist');
+    res.json('404');
 })
 
-app.get('/products', (req, res) => {
-    res.render(Products);
-})
-
-app.get('/cart', (req, res) => {
-    res.render(Cart);
-})
-
-app.listen(3000, () => {
-    console.log('Example app listening on port 3000');
-})
+app.listen(3000);

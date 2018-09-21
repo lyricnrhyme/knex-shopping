@@ -1,9 +1,13 @@
-DROP TABLE IF EXISTS users;
+const express = require('express');
+const app = express();
+const bp = require('body-parser');
+const route = express.Router();
 
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT now(),
-    updated_at TIMESTAMP NOT NULL DEFAULT now()
-)
+
+
+app.get('/users', (req, res) => {
+    console.log('Users route home');
+    res.json('Welcome to USERS');
+})
+
+module.exports = route;
