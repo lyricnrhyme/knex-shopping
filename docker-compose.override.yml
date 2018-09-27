@@ -1,9 +1,11 @@
 version: '3'
 services:
   my-app:
+    depends_on:
+      - db
     image: lyricnrhyme/knex-shopping:${IMAGE_VERSION}-local
-    command: ["./node_modules/.bin/nodemon", "server.js"]
-    container_name: this-app
+    command: ["./node_modules/.bin/node", "server.js"]
+    container_name: knex-shopping
     volumes:
       - ".:/app/:rw"
     env_file: .env

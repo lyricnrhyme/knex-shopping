@@ -6,14 +6,17 @@ const pg = require('pg');
 const Users = require('./routes/users.js');
 const Products = require('./routes/products.js');
 const Cart = require('./routes/cart.js');
+const dotenv = require('dotenv');
 
-app.use('/users', Users);
-app.use('/products', Products);
-app.use('/cart', Cart);
+// app.use('/users', Users);
+// app.use('/products', Products);
+// app.use('/cart', Cart);
 
-app.get('*', (req, res) => {
-    console.log('User attempted to get a route/url that does not exist');
-    res.json('404');
-})
+app.get('/', (req, res) => {
+    console.log('Dis is homepage');
+    res.json('Dis is homepage');
+});
 
-app.listen(3000);
+app.listen(8000, () => {
+    console.log(`Started app on port: ${process.env.EXPRESS_CONTAINER_PORT}`);
+});
